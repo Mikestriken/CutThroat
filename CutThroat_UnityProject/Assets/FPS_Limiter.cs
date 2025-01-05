@@ -1,8 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FPS_Limiter : MonoBehaviour
 {
     private void Start() {
-        // Application.targetFrameRate = 30;
+        Application.targetFrameRate = Screen.currentResolution.refreshRateRatio.ConvertTo<int>();
     }
 }
