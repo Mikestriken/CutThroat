@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class script : MonoBehaviour
+public class ActorScript : MonoBehaviour
 {
+    public Rigidbody2D actorRigidBody;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,6 +13,6 @@ public class script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+           
     }
 }
