@@ -26,6 +26,8 @@ public class ActorScript : MonoBehaviour
 
     private void OnDisable() {
         actorMoveKeys.Disable();
+        
+        actorAttackKeys.performed -= Attack;
         actorAttackKeys.Disable();
     }
 
