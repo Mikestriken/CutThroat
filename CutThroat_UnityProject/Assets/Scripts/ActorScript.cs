@@ -18,6 +18,8 @@ public class ActorScript : MonoBehaviour
     private void OnEnable() {
         actorMoveKeys = actorKeybinds.Player.Move;
         actorMoveKeys.Enable();
+        actorMoveKeys.performed += UpdateMoveDirection;
+        actorMoveKeys.canceled += ResetMoveDirection;
 
         actorAttackKeys = actorKeybinds.Player.Attack;
         actorAttackKeys.Enable();
@@ -25,8 +27,10 @@ public class ActorScript : MonoBehaviour
     }
 
     private void OnDisable() {
+        actorMoveKeys.performed -= UpdateMoveDirection;
+        actorMoveKeys.canceled -= ResetMoveDirection;
         actorMoveKeys.Disable();
-        
+
         actorAttackKeys.performed -= Attack;
         actorAttackKeys.Disable();
     }
@@ -40,9 +44,10 @@ public class ActorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        actorMoveDirection = actorMoveKeys.ReadValue<Vector2>();
-
     }
+
+    private void UpdateMoveDirection(InputAction.CallbackContext context) => actorMoveDirection = actorMoveKeys.ReadValue<Vector2>();
+    private void ResetMoveDirection(InputAction.CallbackContext context) => actorMoveDirection = Vector2.zero;
 
     private void FixedUpdate() {
         // I was told to update rigidBodies in fixed update, source: https://www.youtube.com/watch?v=u42aWzAIAqg
