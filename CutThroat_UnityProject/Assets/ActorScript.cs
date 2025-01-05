@@ -13,6 +13,15 @@ public class ActorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-           
+        const float actorMoveSpeed = 1f;
+
+        // switch (switch_on)
+        // {
+            
+        //     default:
+        // }
+        if (Input.GetKey(KeyCode.RightArrow))
+            actorRigidBody.linearVelocity = Vector2.right * actorMoveSpeed;
+        
     }
 }
