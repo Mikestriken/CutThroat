@@ -687,11 +687,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 9bbe61a8-c834-4e6d-8c5a-288f749e5f41
+  cloudProjectId: 412bb5e4-d4c9-487e-a0f4-d5bc3ecc05a5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: CutThroat
-  organizationId: mikestriken
+  organizationId: yato-ism
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
