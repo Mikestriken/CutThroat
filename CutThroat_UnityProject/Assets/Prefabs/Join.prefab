@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 3384100468200735935}
   - component: {fileID: 8202357555771527131}
   - component: {fileID: 3100439808295756599}
-  - component: {fileID: 8680546841214818718}
   m_Layer: 5
   m_Name: Join
   m_TagString: Untagged
@@ -258,7 +257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8680546841214818718}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
         m_MethodName: StartClient
         m_Mode: 1
@@ -270,16 +269,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8680546841214818718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8260606007008366994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc904aa5847bb3e4ba2debe066592225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameplaySceneName: Game
