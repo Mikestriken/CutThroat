@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Mega script to handle all UI button logic and data
 /// </summary>
-// ToDo: Rename to MainMenu script
 [RequireComponent(typeof(SceneManager))]
 public class MainMenuPanel : MonoBehaviour
 {

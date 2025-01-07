@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 /// Handles keybind events as they initially appear. 
 /// Invokes custom events after each keybind's context parameter has been resolved as best as possible.
 /// </summary>
-// ToDo: Figure out why Actors translate right when switching from InGame map to InUI map
 // ToDo: Add Main Menu UI Map (UI navigation with controller, no resume)
+    // Note: currently set Main Menu map to NONE
 [CreateAssetMenu(menuName = "InputReader")]
 public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.IInUIActions 
 {
