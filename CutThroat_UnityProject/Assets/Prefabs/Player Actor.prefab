@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorRigidBody: {fileID: 3105486532611675643}
+  inputReader: {fileID: 11400000, guid: 0032d31217786b54b9111f5dc7aba1ea, type: 2}
 --- !u!61 &947212049107209157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -190,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1678482580
+  GlobalObjectIdHash: 2109531433
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1

@@ -3,69 +3,27 @@ using UnityEngine.InputSystem;
 
 public class ActorScript : MonoBehaviour
 {
+    // ====================================================================
+    //                          Actor Physics Logic
+    // ====================================================================
     public Rigidbody2D actorRigidBody;
-    public ActorKeybinds actorKeybinds;
-
-    private Vector2 actorMoveDirection = Vector2.zero;
-
-    private InputAction actorMoveKeys;
-    private InputAction actorAttackKeys;
-
-    private void Awake() {
-        actorKeybinds = new ActorKeybinds();
-    }
-    
-    private void OnEnable() {
-        actorMoveKeys = actorKeybinds.Player.Move;
-        actorMoveKeys.Enable();
-        actorMoveKeys.performed += UpdateMoveDirection;
-        actorMoveKeys.canceled += ResetMoveDirection;
-
-        actorAttackKeys = actorKeybinds.Player.Attack;
-        actorAttackKeys.Enable();
-        actorAttackKeys.performed += Attack;
-    }
-
-    private void OnDisable() {
-        actorMoveKeys.performed -= UpdateMoveDirection;
-        actorMoveKeys.canceled -= ResetMoveDirection;
-        actorMoveKeys.Disable();
-
-        actorAttackKeys.performed -= Attack;
-        actorAttackKeys.Disable();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    private void UpdateMoveDirection(InputAction.CallbackContext context) => actorMoveDirection = actorMoveKeys.ReadValue<Vector2>();
-    private void ResetMoveDirection(InputAction.CallbackContext context) => actorMoveDirection = Vector2.zero;
 
     private void FixedUpdate() {
         // I was told to update rigidBodies in fixed update, source: https://www.youtube.com/watch?v=u42aWzAIAqg
         updateMovement();
-        
     }
 
     void updateMovement() {
         const float actorMoveSpeed = 3f;
         
-        switch (actorMoveDirection)
+        switch (_actorMoveDirection)
         {
             case Vector2 v when (v == Vector2.left || v == Vector2.right):
-                actorRigidBody.linearVelocity = actorMoveDirection * actorMoveSpeed + Vector2.up * actorRigidBody.linearVelocity.y;
+                actorRigidBody.linearVelocity = _actorMoveDirection * actorMoveSpeed + Vector2.up * actorRigidBody.linearVelocity.y;
                 break;
 
             case Vector2 v when v == Vector2.up:
-                actorRigidBody.linearVelocity = actorMoveDirection * actorMoveSpeed;
+                actorRigidBody.linearVelocity = _actorMoveDirection * actorMoveSpeed;
                 break;
 
             case Vector2 v when v == Vector2.down:
@@ -74,7 +32,44 @@ public class ActorScript : MonoBehaviour
         }
     }
 
-    private void Attack(InputAction.CallbackContext context) {
-        Debug.Log("We Fired!");
+    // ====================================================================
+    //                        User Input Logic
+    // ====================================================================
+    // * Stores button states
+    [SerializeField] private InputReader inputReader;
+    private Vector2 _actorMoveDirection = Vector2.zero;
+    private bool _dashButtonPressed = false;
+    private bool _jumpButtonPressed = false;
+    private bool _attackButtonPressed = false;
+    private bool _blockButtonPressed = false;
+
+    /// <summary>
+    /// Subscribes to user input events when actor is created / enabled
+    /// </summary>
+    private void OnEnable() {
+        inputReader.MoveEvent += UpdateMoveDirection;
+        inputReader.DashEvent += UpdateDashButtonState;
+        inputReader.JumpEvent += UpdateJumpButtonState;
+        inputReader.AttackEvent += UpdateAttackButtonState;
+        inputReader.BlockEvent += UpdateBlockButtonState;
     }
+
+
+    /// <summary>
+    /// Unsubscribes from user input events when Actor is destroyed / disabled
+    /// </summary>
+    private void OnDisable() {
+        inputReader.MoveEvent -= UpdateMoveDirection;
+        inputReader.DashEvent -= UpdateDashButtonState;
+        inputReader.JumpEvent -= UpdateJumpButtonState;
+        inputReader.AttackEvent -= UpdateAttackButtonState;
+        inputReader.BlockEvent -= UpdateBlockButtonState;
+    }
+
+    // * Updates button states
+    private void UpdateMoveDirection(Vector2 newDirection) => _actorMoveDirection = newDirection;
+    private void UpdateDashButtonState(bool buttonIsPressed) => _dashButtonPressed = buttonIsPressed;
+    private void UpdateJumpButtonState(bool buttonIsPressed) => _jumpButtonPressed = buttonIsPressed;
+    private void UpdateAttackButtonState(bool buttonIsPressed) => _attackButtonPressed = buttonIsPressed;
+    private void UpdateBlockButtonState(bool buttonIsPressed) => _blockButtonPressed = buttonIsPressed;
 }
