@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class InGameDebugUI : MonoBehaviour
 {
+    // =================================================================================
+    //                              MonoBehavior Methods
+    // =================================================================================
     [SerializeField] readonly private TMP_Text _currentMapTextbox;
     [SerializeField] readonly private SObj_InputReader _inputReader;
 
@@ -12,6 +15,9 @@ public class InGameDebugUI : MonoBehaviour
         _currentMapTextbox.text = _inputReader.currentMap.ToString();
     }
 
+    // =================================================================================
+    //                            Debug Context Menu Actions
+    // =================================================================================
     [ContextMenu("MAP/UI")]
     void SetUIMap() => _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_UI);
     [ContextMenu("MAP/InGame")]

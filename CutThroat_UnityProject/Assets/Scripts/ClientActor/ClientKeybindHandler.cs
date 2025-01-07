@@ -4,9 +4,18 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Handles keybind input states for client
 /// </summary>
+// ToDO: Rename to ClientActorKeypressEventsHandler
 public class ClientKeybindHandler : MonoBehaviour
 {
+    // =================================================================================
+    //                              MonoBehavior Methods
+    // =================================================================================
+    private void OnEnable() => SubscribeToUserInputEventsForActor();
+    private void OnDisable() => UnsubscribeFromUserInputEventsForActor();
 
+    // =================================================================================
+    //                              Keypress Events Logic
+    // =================================================================================
     // * Stores button states
     [SerializeField] readonly private SObj_InputReader _inputReader;
     public Vector2 actorMoveDirection {get; private set;} = Vector2.zero;
@@ -15,10 +24,11 @@ public class ClientKeybindHandler : MonoBehaviour
     public bool attackButtonPressed {get; private set;} = false;
     public bool blockButtonPressed {get; private set;} = false;
 
+
     /// <summary>
-    /// Subscribes to user input events when actor is created / enabled
+    /// Subscribes keypress event handlers to user input events when actor is created / enabled
     /// </summary>
-    private void OnEnable() {
+    private void SubscribeToUserInputEventsForActor() {
         _inputReader.MoveEvent += UpdateMoveDirection;
         _inputReader.DashEvent += UpdateDashButtonState;
         _inputReader.JumpEvent += UpdateJumpButtonState;
@@ -28,9 +38,9 @@ public class ClientKeybindHandler : MonoBehaviour
 
 
     /// <summary>
-    /// Unsubscribes from user input events when Actor is destroyed / disabled
+    /// Unsubscribes keypress event handlers from user input events when Actor is destroyed / disabled
     /// </summary>
-    private void OnDisable() {
+    private void UnsubscribeFromUserInputEventsForActor() {
         _inputReader.MoveEvent -= UpdateMoveDirection;
         _inputReader.DashEvent -= UpdateDashButtonState;
         _inputReader.JumpEvent -= UpdateJumpButtonState;

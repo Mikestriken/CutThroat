@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 // ToDo: Disable ResumeEvent handling if game not started yet
 public class KeyMapManager : MonoBehaviour
 {
+    // =================================================================================
+    //                              MonoBehavior Methods
+    // =================================================================================
     private void OnEnable() => SubscribeToUserInputEvents();
     private void OnDisable() => UnsubscribeFromUserInputEvents();
     

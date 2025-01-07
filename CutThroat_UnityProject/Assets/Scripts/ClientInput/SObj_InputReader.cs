@@ -9,8 +9,10 @@ using UnityEngine.InputSystem;
 [CreateAssetMenu(menuName = "InputReader")]
 public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.IInUIActions 
 {
+    // =================================================================================
+    //                              MonoBehavior Methods
+    // =================================================================================
     private InputMap _inputMap;
-
     private void OnEnable() {
         if (_inputMap == null) {
             _inputMap = new InputMap();
