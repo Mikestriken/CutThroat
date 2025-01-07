@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fdb3aa1f8ed46a44a12f6cf3dd8139f, type: 3}
-  m_Name: InputReader
+  m_Name: SObj_InputReader
   m_EditorClassIdentifier: 
