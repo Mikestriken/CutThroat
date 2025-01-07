@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 // ToDo: Rename to MainMenu script
 [RequireComponent(typeof(SceneManager))]
-public class UIScript : MonoBehaviour
+public class MainMenuPanel : MonoBehaviour
 {
     [SerializeField] readonly private GameObject _gameManagers;
     public void StartHost()
