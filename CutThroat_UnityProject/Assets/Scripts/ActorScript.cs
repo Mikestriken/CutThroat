@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handles keybind input states
+/// </summary>
+// ToDo: Move rigidbody updates to separate script tied to actors
 public class ActorScript : MonoBehaviour
 {
     // ====================================================================

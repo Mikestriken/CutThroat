@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 /// Handles keybind events as they initially appear. 
 /// Invokes custom events after each keybind's context parameter has been resolved as best as possible.
 /// </summary>
+// ToDo: Figure out why Actors translate right when switching from InGame map to InUI map
 [CreateAssetMenu(menuName = "InputReader")]
 public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.IInUIActions 
 {
@@ -46,6 +47,8 @@ public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, Input
         NONE
     }
 
+    public InputMaps currentMap {get; private set;}
+
     /// <summary>
     /// Public method to control the current keymapping state for the game
     /// </summary>
@@ -56,16 +59,19 @@ public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, Input
             case InputMaps.IN_GAME:
                 _inputMap.InGame.Enable();
                 _inputMap.InUI.Disable();
+                currentMap = InputMaps.IN_GAME;
                 break;
 
             case InputMaps.IN_UI:
                 _inputMap.InUI.Enable();
                 _inputMap.InGame.Disable();
+                currentMap = InputMaps.IN_UI;
                 break;
 
             case InputMaps.NONE:
                 _inputMap.InUI.Disable();
                 _inputMap.InGame.Disable();
+                currentMap = InputMaps.NONE;
                 break;
         }
     }
