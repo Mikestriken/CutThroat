@@ -17,8 +17,8 @@ public class ClientActorPhysics : MonoBehaviour
     // =================================================================================
     //                            Client Actor Physics Logic
     // =================================================================================
-    [SerializeField] readonly private Rigidbody2D _actorRigidBody;
-    [SerializeField] readonly private ClientKeybindHandler _clientInputs;
+    [SerializeField] private Rigidbody2D _actorRigidBody;
+    [SerializeField] private ClientKeybindHandler _clientInputs;
 
     /// <summary>
     /// Updates movement physics of actor using currently pressed keys

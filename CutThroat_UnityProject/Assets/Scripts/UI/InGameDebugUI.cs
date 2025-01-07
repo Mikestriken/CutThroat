@@ -6,8 +6,8 @@ public class InGameDebugUI : MonoBehaviour
     // =================================================================================
     //                              MonoBehavior Methods
     // =================================================================================
-    [SerializeField] readonly private TMP_Text _currentMapTextbox;
-    [SerializeField] readonly private SObj_InputReader _inputReader;
+    [SerializeField] private TMP_Text _currentMapTextbox;
+    [SerializeField] private SObj_InputReader _inputReader;
 
     // Update is called once per frame
     void Update()

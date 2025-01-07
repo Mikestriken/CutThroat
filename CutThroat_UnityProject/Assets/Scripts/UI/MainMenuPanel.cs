@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(SceneManager))]
 public class MainMenuPanel : MonoBehaviour
 {
-    [SerializeField] readonly private GameObject _gameManagers;
+    [SerializeField] private GameObject _gameManagers;
     public void StartHost()
     {
         NetworkManager.Singleton.StartHost();
@@ -22,8 +22,8 @@ public class MainMenuPanel : MonoBehaviour
         _gameManagers.GetComponent<ScenarioManager>().SetServerScene(ScenarioManager.Scene.GAME);
     }
 
-    // ToDo: find better way to set key mapping for clients that don't load the scene
-    [SerializeField] readonly private SObj_InputReader _inputReader;
+    // ToDo: find better way to call `SetInputMap(SObj_InputReader.InputMaps.IN_GAME)` for clients that don't load the scene
+    [SerializeField] private SObj_InputReader _inputReader;
     public void StartClient()
     {
         NetworkManager.Singleton.StartClient();
@@ -31,4 +31,6 @@ public class MainMenuPanel : MonoBehaviour
     }
 
     public void QuitGame() => Application.Quit();
+
+    public void QuitToMenu() => _gameManagers.GetComponent<ScenarioManager>().SetClientScene(ScenarioManager.Scene.MENU);
 }

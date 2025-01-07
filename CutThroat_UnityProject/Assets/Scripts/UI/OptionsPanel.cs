@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.Audio;
 using TMPro;
+using Unity.VisualScripting;
 
+/// <summary>
+/// Controls the logic for loading the Options Menu Page.
+/// </summary>
+// ToDo: Resolve bug where opening options immediately sets the resolution
 public class OptionsPanel : MonoBehaviour {
     // =================================================================================
     //                              MonoBehavior Methods
     // =================================================================================
-    private void Awake() => RetrieveValidResolutionsForClient();
+    private void Awake(){
+        if (_validResolutionsForClient == null) RetrieveValidResolutionsForClient();
+    }
 
     // =================================================================================
     //                              Options Menu Logic
     // =================================================================================
-    [SerializeField] readonly private AudioMixer _mainAudioMixer;
+    [SerializeField] private AudioMixer _mainAudioMixer;
     private const string _MAIN_AUDIO_MIXER_VOLUME_PARAMETER_NAME = "ExposedVolumeParameter";
 
     // Tuple to contain resolution.width, resolution.height
@@ -62,6 +69,7 @@ public class OptionsPanel : MonoBehaviour {
         fullscreenToggle.isOn = Screen.fullScreen;
         
         // Update Resolutions dropdown
+        if (_validResolutionsForClient == null) RetrieveValidResolutionsForClient();
         List<string> resolutionsToDisplay = new List<string>();
 
         int currentResolutionIndex = 0;

@@ -60,7 +60,7 @@ public class ScenarioManager : MonoBehaviour {
         }
     }
 
-    [SerializeField] readonly private SObj_InputReader _inputReader;
+    [SerializeField] private SObj_InputReader _inputReader;
     /// <summary>
     /// Adjust the currently set Input Map to the to the appropriate setting for each scene.
     /// </summary>
