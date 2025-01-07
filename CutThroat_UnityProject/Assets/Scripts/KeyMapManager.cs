@@ -16,7 +16,7 @@ public class KeyMapManager : MonoBehaviour
     // ========================================================================
     //                    Assigning To Input Events Handlers
     // ========================================================================
-    [SerializeField] private InputReader inputReader;
+    [SerializeField] private SObj_InputReader inputReader;
     /// <summary>
     /// Subscribes to user input events. Should be called OnEnable.
     /// </summary>
@@ -45,14 +45,14 @@ public class KeyMapManager : MonoBehaviour
     private void HandleMenuButtonPressedEvent() {
         // mainMenu.SetActive(true);
         SceneManager.LoadScene(_MENU_SCENE_NAME);
-        inputReader.SetInputMap(InputReader.InputMaps.IN_UI);
+        inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_UI);
 
     }
 
     private void HandleResumeButtonPressedEvent() {
         // mainMenu.SetActive(false);
         SceneManager.LoadScene(_GAME_SCENE_NAME);
-        inputReader.SetInputMap(InputReader.InputMaps.IN_GAME);
+        inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_GAME);
 
     }
 

@@ -36,7 +36,7 @@ public class ActorScript : MonoBehaviour
     //                        User Input Logic
     // ====================================================================
     // * Stores button states
-    [SerializeField] private InputReader inputReader;
+    [SerializeField] private SObj_InputReader inputReader;
     private Vector2 _actorMoveDirection = Vector2.zero;
     private bool _dashButtonPressed = false;
     private bool _jumpButtonPressed = false;

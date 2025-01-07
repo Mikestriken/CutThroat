@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// Invokes custom events after each keybind's context parameter has been resolved as best as possible.
 /// </summary>
 [CreateAssetMenu(menuName = "InputReader")]
-public class InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.IInUIActions 
+public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.IInUIActions 
 {
     private InputMap _inputMap;
 
@@ -26,7 +26,7 @@ public class InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.I
     /// <summary>
     /// If the InputReader instance is ever destroyed, assert that the current map should be disabled
     /// </summary>
-    ~InputReader() {
+    ~SObj_InputReader() {
         Debug.Assert((!_inputMap?.InGame.enabled) ?? true, "ERR: InGame Map enabled on destruction");
         Debug.Assert((!_inputMap?.InUI.enabled) ?? true, "ERR: InUI Map enabled on destruction");
     }
