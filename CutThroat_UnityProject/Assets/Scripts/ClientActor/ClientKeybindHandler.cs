@@ -4,6 +4,7 @@ using System.Collections;
 /// <summary>
 /// Handles keybind input states for client
 /// </summary>
+// ToDo: Figure out how to suppress warning: "The referenced script on this Behaviour (Game Object 'GameManagers') is missing!" and confirm this warning is because of coroutine.
 public class ClientKeybindHandler : MonoBehaviour
 {
     // =================================================================================
@@ -93,14 +94,17 @@ public class ClientKeybindHandler : MonoBehaviour
     }
 
     private void HandleMenuButtonPressedEvent() {
-        _inGameMenu.SetActive(true);
-        _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_UI);
+        if (_inGameMenu != null) {
+            _inGameMenu.SetActive(true);
+            _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_UI);
+        }
 
     }
 
     private void HandleResumeButtonPressedEvent() {
-        _inGameMenu.SetActive(false);
-        _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_GAME);
-
+        if (_inGameMenu != null) {
+            _inGameMenu.SetActive(false);
+            _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_GAME);
+        }
     }
 }
