@@ -23,3 +23,7 @@ C# Standards Reference: https://learn.microsoft.com/en-us/dotnet/csharp/fundamen
 - Standard Class Methods IE Start(), Update() etc are called at the top of the class
 - Logic is separated into different parts of the code.
 - Variables should be defined as close to the location they are used in as possible.
+
+### WIP
+- Retrieve GameManager dependencies via singleton or GameObject or Zenjet dependency injection?  
+    - Suggest GameManager with enabled override set

@@ -8,7 +8,7 @@ public class ClientKeybindHandler : MonoBehaviour
 {
 
     // * Stores button states
-    [SerializeField] private SObj_InputReader inputReader;
+    [SerializeField] readonly private SObj_InputReader _inputReader;
     public Vector2 actorMoveDirection {get; private set;} = Vector2.zero;
     public bool dashButtonPressed {get; private set;} = false;
     public bool jumpButtonPressed {get; private set;} = false;
@@ -19,11 +19,11 @@ public class ClientKeybindHandler : MonoBehaviour
     /// Subscribes to user input events when actor is created / enabled
     /// </summary>
     private void OnEnable() {
-        inputReader.MoveEvent += UpdateMoveDirection;
-        inputReader.DashEvent += UpdateDashButtonState;
-        inputReader.JumpEvent += UpdateJumpButtonState;
-        inputReader.AttackEvent += UpdateAttackButtonState;
-        inputReader.BlockEvent += UpdateBlockButtonState;
+        _inputReader.MoveEvent += UpdateMoveDirection;
+        _inputReader.DashEvent += UpdateDashButtonState;
+        _inputReader.JumpEvent += UpdateJumpButtonState;
+        _inputReader.AttackEvent += UpdateAttackButtonState;
+        _inputReader.BlockEvent += UpdateBlockButtonState;
     }
 
 
@@ -31,11 +31,11 @@ public class ClientKeybindHandler : MonoBehaviour
     /// Unsubscribes from user input events when Actor is destroyed / disabled
     /// </summary>
     private void OnDisable() {
-        inputReader.MoveEvent -= UpdateMoveDirection;
-        inputReader.DashEvent -= UpdateDashButtonState;
-        inputReader.JumpEvent -= UpdateJumpButtonState;
-        inputReader.AttackEvent -= UpdateAttackButtonState;
-        inputReader.BlockEvent -= UpdateBlockButtonState;
+        _inputReader.MoveEvent -= UpdateMoveDirection;
+        _inputReader.DashEvent -= UpdateDashButtonState;
+        _inputReader.JumpEvent -= UpdateJumpButtonState;
+        _inputReader.AttackEvent -= UpdateAttackButtonState;
+        _inputReader.BlockEvent -= UpdateBlockButtonState;
     }
 
     // * Updates button states

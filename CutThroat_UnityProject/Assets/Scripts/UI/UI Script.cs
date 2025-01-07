@@ -14,6 +14,7 @@ using System;
 /// Mega script to handle all UI button logic and data
 /// </summary>
 // ToDo: We should really split this script up.... Mega scripts are bad practice... Ask Gray for permission to do this.
+[RequireComponent(typeof(SceneManager))]
 public class UIScript : MonoBehaviour
 {
     private void Start() => RetrieveValidResolutionsForClient();
@@ -21,9 +22,9 @@ public class UIScript : MonoBehaviour
     // =================================================================================
     //                              Options Menu Logic
     // =================================================================================
-    [SerializeField] private AudioMixer _mainAudioMixer;
+    [SerializeField] readonly private AudioMixer _mainAudioMixer;
     private const string _MAIN_AUDIO_MIXER_VOLUME_PARAMETER_NAME = "ExposedVolumeParameter";
-    [SerializeField] private GameObject _optionsMenuContainer;
+    [SerializeField] readonly private GameObject _optionsMenuContainer;
 
     // Tuple to contain resolution.width, resolution.height
     private List<Tuple<int, int>> _validResolutionsForClient;
@@ -149,23 +150,25 @@ public class UIScript : MonoBehaviour
     // =================================================================================
     //                              Main Menu Logic
     // =================================================================================
-    [SerializeField] private const string _gameplaySceneName = "Game";
-
+    [SerializeField] readonly private GameObject _gameManagers;
     public void StartHost()
     {
         NetworkManager.Singleton.StartHost();
-        NetworkManager.Singleton.SceneManager.LoadScene(_gameplaySceneName, LoadSceneMode.Single);
+        _gameManagers.GetComponent<ScenarioManager>().SetServerScene(ScenarioManager.Scene.GAME);
     }
 
     public void StartServer()
     {
         NetworkManager.Singleton.StartServer();
-        NetworkManager.Singleton.SceneManager.LoadScene(_gameplaySceneName, LoadSceneMode.Single);
+        _gameManagers.GetComponent<ScenarioManager>().SetServerScene(ScenarioManager.Scene.GAME);
     }
 
+    // ToDo: find better way to set key mapping for clients that don't load the scene
+    [SerializeField] readonly private SObj_InputReader _inputReader;
     public void StartClient()
     {
-        NetworkManager.Singleton.StartClient();        
+        NetworkManager.Singleton.StartClient();
+        _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_GAME);
     }
 
     public void QuitGame() => Application.Quit();

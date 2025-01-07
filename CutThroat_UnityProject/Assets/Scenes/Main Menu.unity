@@ -5291,6 +5291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainAudioMixer: {fileID: 24100000, guid: a29ec9587c07f1440ad6d7b343ee777f, type: 2}
   _optionsMenuContainer: {fileID: 3796174195490096106}
+  _gameManagers: {fileID: 5555223055897139874}
+  _inputReader: {fileID: 11400000, guid: 0032d31217786b54b9111f5dc7aba1ea, type: 2}
 --- !u!1 &215258654823354022
 GameObject:
   m_ObjectHideFlags: 0
@@ -8712,6 +8714,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4596183975946071066, guid: e06d8cd189c2652458e57419c6e82485, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5882343482475813705, guid: e06d8cd189c2652458e57419c6e82485, type: 3}
       propertyPath: m_Name
       value: GameManagers
@@ -8721,6 +8727,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e06d8cd189c2652458e57419c6e82485, type: 3}
+--- !u!1 &5555223055897139874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5882343482475813705, guid: e06d8cd189c2652458e57419c6e82485, type: 3}
+  m_PrefabInstance: {fileID: 5555223055897139873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5615837029809093303
 RectTransform:
   m_ObjectHideFlags: 0

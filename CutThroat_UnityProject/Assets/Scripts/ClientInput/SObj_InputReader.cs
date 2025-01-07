@@ -20,7 +20,7 @@ public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, Input
             _inputMap.InGame.SetCallbacks(this);
             _inputMap.InUI.SetCallbacks(this);
 
-            SetInputMap(InputMaps.IN_GAME);
+            SetInputMap(InputMaps.IN_UI);
         }
     }
 

@@ -7,8 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(ClientKeybindHandler))]
 public class ClientActorPhysics : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _actorRigidBody;
-    [SerializeField] private ClientKeybindHandler _clientInputs;
+    [SerializeField] readonly private Rigidbody2D _actorRigidBody;
+    [SerializeField] readonly private ClientKeybindHandler _clientInputs;
 
     // I was told to update rigidBodies in fixed update, source: https://www.youtube.com/watch?v=u42aWzAIAqg
     private void FixedUpdate() => updateMovement();

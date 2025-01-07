@@ -16,21 +16,21 @@ public class KeyMapManager : MonoBehaviour
     // ========================================================================
     //                    Assigning To Input Events Handlers
     // ========================================================================
-    [SerializeField] private SObj_InputReader inputReader;
+    [SerializeField] readonly private SObj_InputReader _inputReader;
     /// <summary>
     /// Subscribes to user input events. Should be called OnEnable.
     /// </summary>
     private void SubscribeToUserInputEvents() {
-        inputReader.MenuEvent += HandleMenuButtonPressedEvent;
-        inputReader.ResumeEvent += HandleResumeButtonPressedEvent;
+        _inputReader.MenuEvent += HandleMenuButtonPressedEvent;
+        _inputReader.ResumeEvent += HandleResumeButtonPressedEvent;
     }
 
     /// <summary>
     /// Unsubscribes from user input events. Should be called OnDisable.
     /// </summary>
     private void UnsubscribeFromUserInputEvents() {
-        inputReader.MenuEvent -= HandleMenuButtonPressedEvent;
-        inputReader.ResumeEvent -= HandleResumeButtonPressedEvent;
+        _inputReader.MenuEvent -= HandleMenuButtonPressedEvent;
+        _inputReader.ResumeEvent -= HandleResumeButtonPressedEvent;
     }
 
     // ========================================================================
@@ -38,21 +38,15 @@ public class KeyMapManager : MonoBehaviour
     // ========================================================================
     // ToDo: Figure out how to open main menu while playing during multiplayer...
     // [SerializeField] private GameObject mainMenu;
-    [SerializeField] private const string _MENU_SCENE_NAME = "Scenes/Main Menu"; 
-    [SerializeField] private const string _GAME_SCENE_NAME = "Scenes/Game"; 
-
-
     private void HandleMenuButtonPressedEvent() {
         // mainMenu.SetActive(true);
-        SceneManager.LoadScene(_MENU_SCENE_NAME);
-        inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_UI);
+        _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_UI);
 
     }
 
     private void HandleResumeButtonPressedEvent() {
         // mainMenu.SetActive(false);
-        SceneManager.LoadScene(_GAME_SCENE_NAME);
-        inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_GAME);
+        _inputReader.SetInputMap(SObj_InputReader.InputMaps.IN_GAME);
 
     }
 
