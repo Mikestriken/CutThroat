@@ -2,50 +2,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Handles keybind input states
+/// Handles keybind input states for client
 /// </summary>
-// ToDo: Move rigidbody updates to separate script tied to actors
-public class ActorScript : MonoBehaviour
+public class ClientKeybindHandler : MonoBehaviour
 {
-    // ====================================================================
-    //                          Actor Physics Logic
-    // ====================================================================
-    public Rigidbody2D actorRigidBody;
 
-    private void FixedUpdate() {
-        // I was told to update rigidBodies in fixed update, source: https://www.youtube.com/watch?v=u42aWzAIAqg
-        updateMovement();
-    }
-
-    void updateMovement() {
-        const float actorMoveSpeed = 3f;
-        
-        switch (_actorMoveDirection)
-        {
-            case Vector2 v when (v == Vector2.left || v == Vector2.right):
-                actorRigidBody.linearVelocity = _actorMoveDirection * actorMoveSpeed + Vector2.up * actorRigidBody.linearVelocity.y;
-                break;
-
-            case Vector2 v when v == Vector2.up:
-                actorRigidBody.linearVelocity = _actorMoveDirection * actorMoveSpeed;
-                break;
-
-            case Vector2 v when v == Vector2.down:
-
-                break;
-        }
-    }
-
-    // ====================================================================
-    //                        User Input Logic
-    // ====================================================================
     // * Stores button states
     [SerializeField] private SObj_InputReader inputReader;
-    private Vector2 _actorMoveDirection = Vector2.zero;
-    private bool _dashButtonPressed = false;
-    private bool _jumpButtonPressed = false;
-    private bool _attackButtonPressed = false;
-    private bool _blockButtonPressed = false;
+    public Vector2 actorMoveDirection {get; private set;} = Vector2.zero;
+    public bool dashButtonPressed {get; private set;} = false;
+    public bool jumpButtonPressed {get; private set;} = false;
+    public bool attackButtonPressed {get; private set;} = false;
+    public bool blockButtonPressed {get; private set;} = false;
 
     /// <summary>
     /// Subscribes to user input events when actor is created / enabled
@@ -71,9 +39,9 @@ public class ActorScript : MonoBehaviour
     }
 
     // * Updates button states
-    private void UpdateMoveDirection(Vector2 newDirection) => _actorMoveDirection = newDirection;
-    private void UpdateDashButtonState(bool buttonIsPressed) => _dashButtonPressed = buttonIsPressed;
-    private void UpdateJumpButtonState(bool buttonIsPressed) => _jumpButtonPressed = buttonIsPressed;
-    private void UpdateAttackButtonState(bool buttonIsPressed) => _attackButtonPressed = buttonIsPressed;
-    private void UpdateBlockButtonState(bool buttonIsPressed) => _blockButtonPressed = buttonIsPressed;
+    private void UpdateMoveDirection(Vector2 newDirection) => actorMoveDirection = newDirection;
+    private void UpdateDashButtonState(bool buttonIsPressed) => dashButtonPressed = buttonIsPressed;
+    private void UpdateJumpButtonState(bool buttonIsPressed) => jumpButtonPressed = buttonIsPressed;
+    private void UpdateAttackButtonState(bool buttonIsPressed) => attackButtonPressed = buttonIsPressed;
+    private void UpdateBlockButtonState(bool buttonIsPressed) => blockButtonPressed = buttonIsPressed;
 }

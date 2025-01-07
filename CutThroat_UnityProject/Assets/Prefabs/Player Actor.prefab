@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 947212049107209157}
   - component: {fileID: 5572187919957743673}
   - component: {fileID: 2415665376344867485}
+  - component: {fileID: -5045423529353653594}
   m_Layer: 3
   m_Name: Player Actor
   m_TagString: Untagged
@@ -131,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5af54ede272054f9a625ada9ce37f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorRigidBody: {fileID: 3105486532611675643}
   inputReader: {fileID: 11400000, guid: 0032d31217786b54b9111f5dc7aba1ea, type: 2}
 --- !u!61 &947212049107209157
 BoxCollider2D:
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2109531433
+  GlobalObjectIdHash: 1678482580
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -240,3 +240,17 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &-5045423529353653594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280965292991223953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7118346d7d9a64a468118322306924e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorRigidBody: {fileID: 3105486532611675643}
+  _clientInputs: {fileID: 6370548350523904881}
