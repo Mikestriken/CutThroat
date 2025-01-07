@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 /// Handles keybind events as they initially appear. 
 /// Invokes custom events after each keybind's context parameter has been resolved as best as possible.
 /// </summary>
-// ToDo: Test if scriptable object instance is destroy during scene transition (if so changing the current input mapping using SetInputMap might not be a valid solution...)
-// ToDo: Make singleton (in case multiple scriptable object instances are present)
 [CreateAssetMenu(menuName = "InputReader")]
 public class InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.IInUIActions 
 {
@@ -33,7 +31,9 @@ public class InputReader : ScriptableObject, InputMap.IInGameActions, InputMap.I
         Debug.Assert((!_inputMap?.InUI.enabled) ?? true, "ERR: InUI Map enabled on destruction");
     }
 
-    private void OnDisable() => SetInputMap(InputMaps.NONE);
+    private void OnDisable() {
+        SetInputMap(InputMaps.NONE);
+    }
 
     // =========================================================================
     //                                Helper Methods

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 // Todo: Create scene switcher manager use dependency injection to make it require a KeyMapManager
     // Note: Only reason keybinds work is because InputReader initializes InputMap to InputMaps.IN_GAME
+// ToDo: Create pause menu
 // ToDo: Disable ResumeEvent handling if game not started yet
 public class KeyMapManager : MonoBehaviour
 {
