@@ -28,8 +28,8 @@ public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, Input
     /// If the InputReader instance is ever destroyed, assert that the current map should be disabled
     /// </summary>
     ~SObj_InputReader() {
-        Debug.Assert((!_inputMap?.InGame.enabled) ?? true, "ERR: InGame Map enabled on destruction");
-        Debug.Assert((!_inputMap?.InUI.enabled) ?? true, "ERR: InUI Map enabled on destruction");
+        Debug.Assert((!_inputMap?.InGame.enabled) ?? true, "SObj_InputReader ERR: InGame Map enabled on destruction");
+        Debug.Assert((!_inputMap?.InUI.enabled) ?? true, "SObj_InputReader ERR: InUI Map enabled on destruction");
     }
 
     private void OnDisable() {
@@ -47,7 +47,7 @@ public class SObj_InputReader : ScriptableObject, InputMap.IInGameActions, Input
         NONE
     }
 
-    public InputMaps currentMap {get; private set;}
+    public InputMaps currentMap {get; private set;} = InputMaps.NONE;
 
     /// <summary>
     /// Public method to control the current keymapping state for the game
