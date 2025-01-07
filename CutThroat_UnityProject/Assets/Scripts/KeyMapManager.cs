@@ -1,7 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+/// <summary>
+/// Manager that handles switching between different keybind maps when appropriate.
+/// </summary>
+// Todo: Create scene switcher manager use dependency injection to make it require a KeyMapManager
+    // Note: Only reason keybinds work is because InputReader initializes InputMap to InputMaps.IN_GAME
+// ToDo: Disable ResumeEvent handling if game not started yet
+public class KeyMapManager : MonoBehaviour
 {
     private void OnEnable() => SubscribeToUserInputEvents();
     private void OnDisable() => UnsubscribeFromUserInputEvents();
@@ -27,7 +33,7 @@ public class GameManager : MonoBehaviour
     }
 
     // ========================================================================
-    //                    Handling Menu Button Press Logic
+    //                    Handling Menu Keybind Press Logic
     // ========================================================================
     // ToDo: Figure out how to open main menu while playing during multiplayer...
     // [SerializeField] private GameObject mainMenu;
